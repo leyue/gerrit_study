@@ -1,0 +1,58 @@
+安装
+apt-get install git-all
+
+配置
+git config –global user.name "leyue"
+git config –global user.email "317513461@qq.com"
+git默认的文本编辑器是nano, 执行下面的命令将git的文本编辑器改为我们熟悉的vim
+git config --global core.editor vim
+
+初始化
+git init
+git add ./
+git commit
+
+删除文件，文件夹
+git rm -rf --cache .idea/
+
+查看file 和仓库之间代码的区别
+git diff –cached
+git diff
+
+创建分支
+git branch experimental
+
+查看当前分支
+git branch
+
+切换到分支
+git checkout experimental
+
+commit
+git commit -a
+
+切回主分支
+git checkout master
+
+合并分支
+git merge experimental
+
+查看解决冲突
+cat main.c vscode里面直接看
+
+再次提交
+git commit -a
+
+查看git提交历史记录图形界面
+gitk
+
+删除分支
+git branch -d experimental
+-d,表示在分支已经合并到主干后删除分支 -D强删
+
+上传：在git仓库创建新的仓库然后复制仓库URL链接：
+git remote add origin https://github.com/leyue/gerrit_study.git
+git push -u origin master
+
+
+
