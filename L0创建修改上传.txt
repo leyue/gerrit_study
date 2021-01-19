@@ -7,8 +7,8 @@ cw52315231
 apt-get install git-all
 
 配置
-git config –global user.name "leyue"
-git config –global user.email "317513461@qq.com"
+git config --global user.name "leyue"
+git config --global user.email "317513461@qq.com"
 git默认的文本编辑器是nano, 执行下面的命令将git的文本编辑器改为我们熟悉的vim
 git config --global core.editor vim
 
@@ -58,6 +58,9 @@ git branch -d experimental
 上传：在git仓库创建新的仓库然后复制仓库URL链接：
 git remote add origin https://github.com/leyue/gerrit_study.git
 git push -u origin master
+
+记住push 账号密码
+git config --global credential.helper store
 
 
 
