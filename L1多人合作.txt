@@ -1,0 +1,2 @@
+拷贝
+git clone /home/gerrit_study gerrit_study_other
