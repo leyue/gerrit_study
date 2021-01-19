@@ -1,2 +1,12 @@
 拷贝
 git clone /home/gerrit_study gerrit_study_other
+
+将小强的工作的 master 合并到我的当前的分支上(通常是主干道)。当然,如果这期间,我也修改
+了项目,那么 git pull 的时候如果报告冲突,我也是需要自己来搞定的
+git pull /home/gerrit_study_other master
+
+commmit
+git commit -m ""
+
+
+

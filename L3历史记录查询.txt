@@ -1,0 +1,53 @@
+1
+git 的历史记录是由一些列相关联的”commit”所组成的。每一次“commit”都会有一个唯一的名称。如下黑体字所示:
+[rocrocket@wupengchong project]$ git log
+commit 5b888402aadd3cd41b3fe8c84a8658da07893b20
+Author: rocrocket <wupengchong@gmail.com>
+Date:
+Wed Sep 24 13:16:46 2008 +0800
+after pull from rocrocket
+Hello!!!!!
+2
+我们可以使用 git show 再加上述的 commit 名称来显式更详细的 commit 信息:
+[rocrocket@wupengchong project]$ git show 5b888402aadd3cd41b3fe8c84a8658da07893b20
+你完全可以用一个最短的且唯一的“名称前几个字符”来只待某次 commit:
+[rocrocket@wupengchong project]$ git show 5b888 //只要能区别与其他名称就足够了
+使用 git show 加分支名称,亦可以显示分支信息:
+[rocrocket@wupengchong project]$git show master
+[rocrocket@wupengchong project]$git show experimental
+使用 HEAD 字段可以代表当前分支的头(也就是最近一次 commit):
+[rocrocket@wupengchong project]$git show HEAD
+每一次 commit 都会有”parent commit”,可以使用^表示 parent:
+[rocrocket@wupengchong project]$git show HEAD^ //查看 HEAD 的父母的信息
+[rocrocket@wupengchong project]$git show HEAD^^ //查看 HEAD 的父母的父母的信息
+[rocrocket@wupengchong project]$git show HEAD~4 //查看 HEAD 上溯 4 代的信息
+要注意的是 git-merge 是会产生双父母的,这种情况这样处理:
+[rocrocket@wupengchong project]$git show HEAD^1 //查看 HEAD 的第一个父母
+[rocrocket@wupengchong project]$git show HEAD^2 //查看 HEAD 的第二个父母
+3
+你可以给复杂名称起个别名:
+[rocrocket@wupengchong project]$ git tag V3 5b888 //以后可以用 V3 来代替复杂的名称(5b888...)
+[rocrocket@wupengchong project]$ git show V3
+[rocrocket@wupengchong project]$ git branch stable V3 //建立一个基于 V3 的分支
+4
+可以用 git grep 帮助我们搜索:
+[rocrocket@wupengchong project]$ git grep “print” V3 //在 V3 中搜索所有的包含 print 的行
+[rocrocket@wupengchong project]$ git grep “print” //在所有的历史记录中搜索包含 print 的行
+5
+定位具体的历史记录
+[rocrocket@wupengchong project]$ git log V3..V7 //显示 V3 之后直至 V7 的所有历史记录
+[rocrocket@wupengchong project]$ git log V3.. //显示所有 V3 之后的历史记录。注意<since>..<until>中任何一个被省略
+都将被默认设置为 HEAD。所以如果使用..<until>的话,git log 在大部分情况下会输出空的。
+[rocrocket@wupengchong project]$ git log –since=”2 weeks ago” //显示 2 周前到现在的所有历史记录。具体语法可查询
+git-ref-parse 命令的帮助文件。
+[rocrocket@wupengchong project]$ git log stable..experimental //将显示在 experimental 分支但不在 stable 分支的
+历史记录
+[rocrocket@wupengchong project]$ git log experimental..stable //将显示在 stable 分支但不在 experimental 分支的
+历史记录
+6
+你最喜欢的 gitk 也可以定位具体的历史记录:
+[rocrocket@wupengchong project]$ gitk –since=”2 weeks ago” drivers/ //将在 GUI 中显示自 2 周前到现在为止的且位于
+drivers 目录下的分支记录信息
+===
+到目前为止,我们针对最基本的 git 的操作已经学习完毕了。经过了这么多天的“看日记”,想必大家对这种学习形式
+有自己的认识和评价,希望大家写在下面的留言区,我会不断改进,为大家奉献更好的专题系列。:)
